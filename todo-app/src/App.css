@@ -1,4 +1,3 @@
-/* Base styles */
 .root {
   margin: 0;
   width: 100%;
@@ -14,7 +13,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Todo container */
 .todoContainer {
   background-color: #fff;
   border-radius: 10px;
@@ -26,7 +24,6 @@ body {
   text-align: left;
 }
 
-/* Todo list container */
 .todoList {
   display: flex;
   flex-direction: column-reverse;
@@ -61,7 +58,6 @@ button:hover {
   background-color: #4682b4;
 }
 
-/* Todo item container */
 .todoItem {
   display: flex;
   flex-direction: column;
@@ -71,10 +67,8 @@ button:hover {
   background-color: #f9f9f9;
   padding: 10px;
   width: 100%;
-
 }
 
-/* Todo item text */
 .todoItem .text {
   flex-grow: 1;
   margin-right: 10px;
@@ -82,13 +76,11 @@ button:hover {
   word-break: break-all;
 }
 
-/* Todo item buttons */
 .buttons {
   display: flex;
   justify-content: flex-end;
   margin-top: auto;
 }
-
 
 .todoItem input[type="text"] {
   flex-grow: 1;
@@ -99,7 +91,7 @@ button:hover {
   word-wrap: break-word;
 }
 
-/* Edit mode buttons */
+/* Edit buttons */
 .todoItem button {
   background-color: #87CEEB;
   color: #fff;
