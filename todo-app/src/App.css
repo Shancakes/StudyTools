@@ -135,3 +135,22 @@ button:hover {
   transition: background-color 0.3s ease-in-out;
   margin-left: 10px;
 }
+
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+/* Style the checkbox input */
+[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  appearance: none;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}

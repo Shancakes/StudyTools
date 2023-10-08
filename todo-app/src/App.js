@@ -1,62 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
 
-
-function TodoList() {
-  const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
-
-  const handleAddTodo = () => {
-    if (newTodo.trim() !== '') {
-      const newTodoItem = {
-        id: Date.now(),
-        text: newTodo,
-      };
-      setTodos([...todos, newTodoItem]);
-      setNewTodo('');
-    }
-  };
-
-  const handleDeleteTodo = (id) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
-  };
-
-  const handleUpdateTodo = (id, updatedText) => {
-    const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, text: updatedText } : todo
-    );
-    setTodos(updatedTodos);
-  };
-
-  return (
-    <div className="todoContainer">
-      <h1>Todo List</h1>
-      <input
-        type="text"
-        placeholder="Enter a new task..."
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-      />
-      <button onClick={handleAddTodo}>Add</button>
-      <div className="todoList">
-        {todos.map((todo) => (
-          <div className="todoItem" key={todo.id}>
-            <EditTodoItem
-              todo={todo}
-              onDelete={handleDeleteTodo}
-              onUpdate={handleUpdateTodo}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function EditTodoItem({ todo, onDelete, onUpdate }) {
   const [isEditing, setIsEditing] = useState(false);
   const [updatedText, setUpdatedText] = useState(todo.text);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleUpdateText = () => {
     onUpdate(todo.id, updatedText);
@@ -71,8 +19,19 @@ function EditTodoItem({ todo, onDelete, onUpdate }) {
     setIsEditing(false);
   };
 
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div className={`editTodoItem ${isEditing ? 'editing' : ''}`}>
+      <div className="checkbox-container">
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+        />
+      </div>
       {isEditing ? (
         <div className="editContainer">
           <input
@@ -88,12 +47,11 @@ function EditTodoItem({ todo, onDelete, onUpdate }) {
         <div className="text">{todo.text}</div>
       )}
       <div className="buttons">
-        <button onClick={handleEditClick}>Edit</button>
         <button onClick={() => onDelete(todo.id)}>Delete</button>
+        <button onClick={handleEditClick}>Edit</button>
       </div>
     </div>
   );
 }
 
-
-export default TodoList;
+export default EditTodoItem;
