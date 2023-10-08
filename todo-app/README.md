@@ -10,7 +10,9 @@ A simple ToDo app built using React for managing your tasks.
 - Delete tasks from your todo list.
 - Edit existing tasks.
 
+## Screenshots
 
+![to do screenshot](http://todo.png)
 ## Installation
 
 To run this project locally, follow these steps:
