@@ -12,16 +12,16 @@ function TodoItem({ todo, onDelete, onUpdate }) {
 
     return (
         <div className={`todo-item ${isEditing ? 'editing' : ''}`}>
-            {/* Checkbox */}
+            { }
             <input
                 type="checkbox"
                 id={`checkbox-${todo.id}`}
-                checked={false} // Set the initial checked state as needed
+                checked={false}
                 onChange={() => {
-                    // Handle checkbox change if needed
+
                 }}
             />
-            {/* Label for Checkbox */}
+            { }
             <label htmlFor={`checkbox-${todo.id}`} />
             <div className="todo-content">
                 {isEditing ? (
