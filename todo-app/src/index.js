@@ -4,11 +4,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import TodoList from './App';
 
-ReactDOM.render(
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
-    <TodoList /> {/* Render the TodoList component */}
-  </React.StrictMode>,
-  document.getElementById('root')
+    <TodoList />
+  </React.StrictMode>
 );
 
 reportWebVitals();
