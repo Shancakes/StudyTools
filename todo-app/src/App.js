@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import TodoItem from './TodoItem'; // Import the renamed component
+import './App.css';
+
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -29,27 +30,70 @@ function TodoList() {
   };
 
   return (
-    <div>
+    <div className="todoContainer">
       <h1>Todo List</h1>
       <input
         type="text"
-        placeholder="Enter a new todo"
+        placeholder="Enter a new task..."
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
       />
       <button onClick={handleAddTodo}>Add</button>
-      <div>
+      <div className="todoList">
         {todos.map((todo) => (
-          <TodoItem // Change this to TodoItem
-            key={todo.id}
-            todo={todo}
-            onDelete={handleDeleteTodo}
-            onUpdate={handleUpdateTodo}
-          />
+          <div className="todoItem" key={todo.id}>
+            <EditTodoItem
+              todo={todo}
+              onDelete={handleDeleteTodo}
+              onUpdate={handleUpdateTodo}
+            />
+          </div>
         ))}
       </div>
     </div>
   );
 }
+
+function EditTodoItem({ todo, onDelete, onUpdate }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedText, setUpdatedText] = useState(todo.text);
+
+  const handleUpdateText = () => {
+    onUpdate(todo.id, updatedText);
+    setIsEditing(false);
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
+
+  return (
+    <div className={`editTodoItem ${isEditing ? 'editing' : ''}`}>
+      {isEditing ? (
+        <div className="editContainer">
+          <input
+            type="text"
+            value={updatedText}
+            onChange={(e) => setUpdatedText(e.target.value)}
+            autoFocus
+          />
+          <button onClick={handleUpdateText}>Save</button>
+          <button onClick={handleCancelEdit}>Cancel</button>
+        </div>
+      ) : (
+        <div className="text">{todo.text}</div>
+      )}
+      <div className="buttons">
+        <button onClick={handleEditClick}>Edit</button>
+        <button onClick={() => onDelete(todo.id)}>Delete</button>
+      </div>
+    </div>
+  );
+}
+
 
 export default TodoList;
