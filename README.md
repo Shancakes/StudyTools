@@ -1,4 +1,4 @@
-# React Study Tools
+<h1 align="center"> React Study Tools </h1>
 
 # To Do App: #
 
