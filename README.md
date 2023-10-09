@@ -27,7 +27,7 @@ git clone https://github.com/Shancakes/StudyTools.git
 2. Navigate to the project directory:
 
 ```
-cd react-todo-app
+cd todo-app
 ```
 
 3. Install the project dependencies:
